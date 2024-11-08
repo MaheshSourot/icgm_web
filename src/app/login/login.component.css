@@ -1,0 +1,36 @@
+.auth-wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/login-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    
+
+    
+    
+
+    
+}
+
+.auth-box
+{
+    width: 800px;
+    padding: 50px;
+    border-radius: 40px;
+}
+
+h1{
+    font-weight: bold;
+}
+
+.login-btn
+{
+    width: 400px;
+}
+
+.custom-input:focus {
+    border-color:rgb(202, 5, 5); 
+    box-shadow: none;
+  }

@@ -34,10 +34,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",   "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -92,15 +93,19 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",  "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "05e6f04b-b40f-472d-8505-f8fce63a0b50"
   }
 }

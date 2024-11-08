@@ -1,0 +1,21 @@
+.main-container
+{
+    
+    position: relative;
+    height: 100vh;
+    background-image: url('../../assets/login-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+     
+}
+
+.card-container
+{
+    
+    margin-left: 200px;
+    border-radius: 40px;
+    padding: 75px 50px;
+    height: 500px;
+    width: 550px;
+}

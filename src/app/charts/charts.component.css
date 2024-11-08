@@ -1,0 +1,50 @@
+.hero-section
+{
+    background-color: #C4ECF4;
+}
+
+h5{
+    font-size: 16px;
+}
+
+.progress-bar-box {
+    padding: 10px;
+    border-radius: 10px;
+  
+    .progrs_stat {
+      margin-left: 10px;
+      width: calc(100% - 50px);
+  
+      .progress_bar {
+        height: 29px;
+        background-color: #e1e2e4;
+        border-radius: 33px;
+        overflow: hidden;
+        width: 100%;
+  
+        .progress-bar {
+          height: 100%;
+          border-radius: 10px;
+        }
+  
+        & p {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          font-size: fs-12;
+          font-weight: bold;
+          color: #000;
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  svg
+  {
+    position: absolute;
+    top:13%;
+    left:93%;
+  }
+  

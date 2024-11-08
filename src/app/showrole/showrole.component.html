@@ -1,0 +1,35 @@
+ <div class="main-container">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-6">
+                <div class="card mt-5 text-center card-container">
+                    
+                        <div><span class="db"><img src="../../assets/logo.png" alt="homepage" class="light-logo" style="height: 60px;;">
+                        </span>
+                        </div>
+            
+
+                    
+                       <form [formGroup]="UserForm">
+                        <div class="d-flex mt-5">
+                            <select name="" id="" class="form-select" formControlName="role_id">
+                            
+                                @for (item of showUser; track $index) {
+                                    <option [value]="item.role_id">{{item.role_name}}</option>
+                                }
+                            </select>
+
+                            <button class="btn btn-info" (click)="onUserSubmit()">Submit</button>
+                        </div>
+                       </form>
+
+
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+

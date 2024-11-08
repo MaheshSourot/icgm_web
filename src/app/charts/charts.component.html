@@ -1,0 +1,216 @@
+
+<app-nav-bar></app-nav-bar>
+<div class="hero-section">
+  <div class="container">
+    <div class="row">
+      <div class="mb-5 mt-5 d-flex justify-content-between">
+        <button class="btn btn-success rounded-pill" (click)="onRegisration()">
+          Registration
+        </button>
+        <button class="btn btn-success rounded-pill" (click)="onInitiateNewProcess()">
+          Initiate New Process
+        </button>
+       
+      </div>
+
+    </div>
+    <div class="first-part">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="card p-3">
+            <h5>Most Active Client</h5>
+            <h5>{{ client_names }}</h5>
+          </div>
+        </div>
+
+        @for (item of userKeys; track $index) {
+        <div class="col-md-2">
+          <div class="card p-3">
+            <h5>{{ userKeysArray[userKeys.indexOf(item)] | titlecase }}</h5>
+            <h5>{{ userValues[userKeys.indexOf(item)] }}</h5>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="second-part">
+      <div class="row">
+        <div class="col-md-6 mt-5">
+          <div class="card p-3 h-100">
+            <div>
+              <div>
+                <h5>Composition of Claims & Inspections Initiated</h5>
+              </div>
+            </div>
+            @for (item of compostionClaimArray; track $index) {
+
+            <div class="progress-bar-box">
+              <div class="progrs_stat">
+                <div class="d-flex justify-content-between pb-2">
+                  <h5>{{ item.product_name }}</h5>
+                  <p class="p-value mb-0 fs-14">
+                    {{ item.total_initiated_per }}
+                  </p>
+                </div>
+                <div class="progress_bar position-relative">
+                  <div
+                    role="progressbar"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    class="progress-bar process-bar-primary"
+                    [ngStyle]="{
+                      backgroundColor: [
+                        item.color[compostionClaimArray.indexOf(item)]
+                      ],
+                      width: [item.total_initiated_per]
+                    }"
+                  >
+                    <p class="progress-bar-center-text">
+                      {{ item.total_initiated }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        <div class="col-md-6 mt-5">
+          <div class="card p-3">
+            <div class="row">
+              <div class="col-md-12 d-flex justify-content-end">
+                <div class="mt-2 mb-2">
+                  <select name="" id="" class="form-select">
+                    <option value="">Product</option>
+                    @for (item of productName; track $index) {
+                    <option [value]="item">{{ item }}</option>
+                    }
+                  </select>
+                </div>
+              </div>
+            </div>
+            <h5 class="text-center">Task Status Distribution</h5>
+
+            <apx-chart
+              *ngIf="chartOptions"
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [labels]="chartOptions.labels"
+              [colors]="chartOptions.colors"
+              [plotOptions]="chartOptions.plotOptions"
+              [dataLabels]="chartOptions.dataLabels"
+            >
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="third-part">
+        <div class="row">
+          <div class="col-md-6 mt-5">
+            <div class="card p-3">
+              <h5>Number of Claims & Inspections Initiated Each Month</h5>
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-end">
+                  <div class="mt-2 mb-2">
+                    <select name="" id="" class="form-select">
+                      <option value="">Product</option>
+                      @for (item of productName; track $index) {
+                      <option [value]="item">{{ item }}</option>
+                      }
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <apx-chart
+                [series]="chartOptions1.series"
+                [chart]="chartOptions1.chart"
+                [xaxis]="chartOptions1.xaxis"
+                [yaxis]="chartOptions1.yaxis"
+                [title]="chartOptions1.title"
+                [dataLabels]="chartOptions1.dataLabels"
+                [legend]="chartOptions1.legend"
+              >
+              </apx-chart>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-5">
+            <div class="card h-100 p-3">
+              <apx-chart
+                [series]="chartOptions2.series"
+                [chart]="chartOptions2.chart"
+                [xaxis]="chartOptions2.xaxis"
+                [yaxis]="chartOptions2.yaxis"
+                [title]="chartOptions2.title"
+                [dataLabels]="chartOptions2.dataLabels"
+                [plotOptions]="chartOptions2.plotOptions"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fourth-part">
+        <div class="row mt-5">
+          <div class="col-md-6 mb-5">
+            <div class="card p-4">
+              <h5>Top 10 Users by Activity</h5>
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-end">
+                  <div class="mt-2 mb-2 d-flex">
+                    <input
+                      type="search"
+                      class="form-control position-relative"
+                      placeholder="Search"
+                    />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-search"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <apx-chart
+                [series]="chartOptions3.series"
+                [chart]="chartOptions3.chart"
+                [xaxis]="chartOptions3.xaxis"
+                [yaxis]="chartOptions3.yaxis"
+                [title]="chartOptions3.title"
+                [dataLabels]="chartOptions3.dataLabels"
+                [plotOptions]="chartOptions3.plotOptions"
+              ></apx-chart>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card pb-5 p-5">
+              <h5>Monthly Revenue and New Clients Registered</h5>
+              <apx-chart
+                [series]="chartOptions4.series"
+                [chart]="chartOptions4.chart"
+                [xaxis]="chartOptions4.xaxis"
+                [yaxis]="chartOptions4.yaxis"
+                [title]="chartOptions4.title"
+                [dataLabels]="chartOptions4.dataLabels"
+                [plotOptions]="chartOptions4.plotOptions"
+                [legend]="chartOptions4.legend"
+                [tooltip]="chartOptions4.tooltip"
+              >
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

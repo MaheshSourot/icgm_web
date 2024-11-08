@@ -1,0 +1,98 @@
+<app-nav-bar></app-nav-bar>
+<div class="container ">
+    <div class="row bg-primary">
+        <h2 class="text-center text-white">User Information</h2>
+    </div>
+
+    <div class="row mt-3" style="background-color: #00000000;">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-primary">Personal Information</h2>
+
+                <table>
+                    <tr class="table-row mb-5">
+                        <th>First Name: </th>
+                        @if(myProfileData)
+                        {
+                            <td>{{myProfileData.first_name}}</td>
+                        }
+                        
+                        
+                    </tr>
+                    <tr class="table-row">
+                        <th>Last Name: </th>
+                        @if(myProfileData)
+                        {
+                            <td>{{myProfileData.last_name}}</td>
+                        }
+                        
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-primary">Contact Information</h2>
+
+                <table>
+                    <tr class="table-row mb-5">
+                        <th>Email: </th>
+                        @if(myProfileData)
+                        {
+                            <td>{{myProfileData.email}}</td>
+                        }
+                        
+                    </tr>
+                    <tr class="table-row">
+                        <th>Contact: </th>
+                        @if(myProfileData)
+                        {
+                            <td>{{myProfileData.contact_number}}</td>
+                        }
+                        
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row mt-3 ">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-primary">Role Information</h2>
+
+                <table>
+                    <tr class="table-row mb-5">
+                        <th>User Type: </th>
+                        @if(myProfileData)
+                        {
+                            <td>{{myProfileData.user_type}}</td>
+                        }
+                        
+                    </tr>
+                    <tr class="table-row">
+                        <th>RoleType: </th>
+                        @if(myProfileData)
+                        {
+                            <td>{{myProfileData.role_type}}</td>
+                        }
+                        
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <button class="btn btn-primary" (click)="getData()">Get Data</button> -->
+<!-- <button class="btn btn-primary" (click)="logoutData()">Logout</button>  -->
+

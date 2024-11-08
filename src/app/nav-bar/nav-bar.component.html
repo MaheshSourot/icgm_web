@@ -1,0 +1,33 @@
+<header class="p-3 border-bottom">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between">
+        <img src="../../assets/logo.png" alt="" class="img-fluid" style="height: 60px;">
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none " data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../../assets/user4.png" alt="mdo" width="60" height="60" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li class ="bg-primary"><a class="dropdown-item" href="#">
+                <div class=" main">
+                    <div class="d-flex gap-3 " >
+                        <img src="../../assets/user4.png" alt="" width="100" height="100">
+    
+                        <div class="mt-3">
+                            <h2>Md Jasim</h2>
+                            <i>jasimsuperadmin.com</i>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </a></li>
+            <li><a class="dropdown-item" routerLink="/my-profile" >My Profile</a></li>
+            <li><a class="dropdown-item" routerLink="/change-password">Change Password</a></li>
+            <li><a class="dropdown-item" (click)="logoutData()">Logout</a></li>
+            <li><button type="submit" class="btn btn-primary roudede-pill"><a class="dropdown-item" routerLink="/my-profile">View Profile</a></button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>

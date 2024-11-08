@@ -1,0 +1,169 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-container">
+  <div class="container">
+    <div class="first-part">
+      <div class="row">
+        <div class="mt-2">
+          <div class="col-md-12">
+            <div class="card">
+              <h3 class="ps-3 pt-2">Initiate New Process</h3>
+              <div class="d-flex justify-content-between">
+                <div class="col-md-6 mt-2 mb-2">
+                  <div class="d-flex gap-3 ps-2 pe-2">
+                    <label for="productList" class="form-lable">Product</label>
+                    <select
+                      name=""
+                      id="productList"
+                      class="form-select"
+                      (change)="onCategorySelected($event.target)"
+                    >
+                      <option value="Select Product">Select Product</option>
+                      @for (item of Obj; track $index) {
+                      <option [value]="item.id">{{ item.name }}</option>
+
+                      }
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mt-2" *ngIf="productId1">
+                  <div class="d-flex gap-3 ps-2 pe-2">
+                    @if (productId1==="1") {
+                      <label for="productList1" class="form-lable">Insurance</label>
+                    }
+                    @else {
+                      <label for="productList1" class="form-lable">Type</label>
+                    }
+                    
+                    <select
+                      name=""
+                      id="productList1"
+                      class="form-select"
+                      (change)="onFormChange($event.target)"
+                    >
+                      <option value="Select Product">Select Product</option>
+                      @for (item of Obj2; track $index) {
+                      <option [value]="item.id">{{ item.name }}</option>
+
+                      }
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="second-part" *ngIf="insur_id" class="mt-3">
+      <div class="card mb-5">
+        
+        <form [formGroup]="form">
+          @if (title) {
+            <h3 class="ps-5 mt-5">{{title}}</h3>
+
+          }
+         
+          <hr>
+          <div class="row">
+            @for (field of formConfig; track $index) {
+
+            <div class="col-md-6">
+              
+              <div class="d-flex justify-content-between">
+              <div class="pb-3 pt-3">
+                <label class="col-md-12 ms-5 form-label">{{ field.label }}</label>
+              </div>
+
+              <!-- Render text input -->
+              <ng-container *ngIf="field.type === 'text'">
+                <div class="col-md-6 pe-4">
+                  <input class="mt-3 form-control"
+                    [formControlName]="field.name"
+                    [placeholder]="field.placeholder"
+                    type="text"
+                    
+                   
+
+                  />
+                </div>
+              </ng-container>
+
+              <ng-container *ngIf="field.type === 'date'">
+                <div class="col-md-6 pe-4">
+                  <input class="mt-3 form-control"
+                    [formControlName]="field.name"
+                    [placeholder]="field.placeholder"
+                    type="date"
+                  />
+                </div>
+              </ng-container>
+              <ng-container *ngIf="field.type === 'number'">
+                <div class="col-md-6 pe-4">
+                  <input class="mt-3 form-control"
+                    [formControlName]="field.name"
+                    [placeholder]="field.placeholder"
+                    type="number"
+                  />
+                </div>
+              </ng-container>
+
+              <!-- Render select dropdown -->
+              <ng-container *ngIf="field.type === 'select'">
+                <div class="col-md-6 pe-4">
+                  <select [formControlName]="field.name" class="mt-3 form-select" >
+                    <option value="" disabled>{{ field.placeholder }}</option>
+                    <option
+                      *ngFor="let option of field.options"
+                      [value]="option.value"
+                    >
+                      {{ option.label }}
+                    </option>
+                  </select>
+                </div>
+              </ng-container>
+              </div>
+
+              <!-- Display validation error messages -->
+              <div
+                *ngIf="
+                  form.get(field.name)?.invalid && form.get(field.name)?.touched
+                " class="text-danger text-end pe-5"
+              >
+                <div *ngIf="form.get(field.name)?.errors?.['required']" class="text-danger ">
+                  {{ field.validations[0].message }}
+                </div>
+                <div *ngIf="form.get(field.name)?.errors?.['minlength']" class="text-danger">
+                  {{ field.validations[0].message }}
+                  {{ form.get(field.name)?.errors?.['minlength'].requiredLength }}
+                  characters.
+                </div>
+                <div *ngIf="form.get(field.name)?.errors?.['maxlength']" class="text-danger">
+                  {{ field.validations[0].message }}
+                  {{ form.get(field.name)?.errors?.['maxlength'].requiredLength }}
+                  
+                </div>
+              </div>
+            </div>
+          
+
+            }
+            
+            <div class="text-end pe-5 mb-5 mt-5">
+              <button
+                type="submit"
+                class="btn btn-success me-3"
+                (click)="onSubmit()"
+              >
+                Submit
+              </button>
+              <button type="button" class="btn btn-warning" (click)="onEdit()">Auto Fill</button>
+            </div>
+          </div>
+        </form>
+      
+      </div>
+    </div>
+  </div>
+</div>

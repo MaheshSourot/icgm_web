@@ -1,0 +1,230 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+  <div *ngIf="isFormAvailabel">
+    <h2 class="text-center mt-3 mb-5">Add Users</h2>
+    <hr>
+    
+    <div class="row"><h2>Personal Info</h2>
+      <div class="card">
+         
+        <form [formGroup]="addUserForm">
+         <div class="row mt-5">
+          <div class="col-6">
+              <div class="d-flex gap-5">
+                 <label for="" class="form-lable">First&nbsp;Name<sup class="text-danger">*</sup></label>
+                 <div class="input-container1">
+                   <input type="text" class="form-control" placeholder="Enter First Name" formControlName="first_name"> 
+
+                   <div class="text-danger">
+                      @if( (addUserForm.controls['first_name'].touched || addUserForm.controls['first_name'].dirty) && addUserForm.controls['first_name'].errors?.['required']){
+                        <span>Required field</span>
+                      }
+                    </div>
+                  </div>
+              </div>
+
+             
+
+              
+
+               <div class="d-flex gap-5 mt-5">
+                  <label for="" class="form-lable">Email<sup class="text-danger">*</sup></label>
+                  <div class="input-container2">
+                   <input type="email" class="form-control" placeholder="Enter Email" formControlName="email"> 
+
+                   <div class="text-danger">
+                      @if( (addUserForm.controls['email'].touched || addUserForm.controls['email'].dirty) && addUserForm.controls['email'].errors?.['required']){
+                        <span>Required field</span>
+                      }
+                      @else if((addUserForm.controls['email'].touched ||addUserForm.controls['email'].dirty) && addUserForm.controls['email'].errors?.['email'])
+                      {
+                        <span>please enter valid email</span>
+                      }
+                    </div>
+                  </div>
+               </div>
+
+               
+
+               <!-- {{department | json}} -->
+
+               <div class="d-flex gap-5 mt-5">
+                  <label for="dept" class="form-label">Deparment<sup class="text-danger">*</sup></label>
+                  <div class="select_feild">
+                   <select _ngcontent-ng-c3187538701="" id="department" formControlName="department_id" class="form-control form-select ng-pristine ng-invalid ng-touched">
+                      <option _ngcontent-ng-c3187538701="" [value]="" selected disabled class="text-secondry">Select Department</option>
+                      @for (item of department; track $index) 
+                      {
+                         <option _ngcontent-ng-c3187538701="" [value]="item.id" selected class="text-secondry">{{item.name}}</option>
+ 
+                      }
+                   </select>
+                   <div class="text-danger">
+                      @if( (addUserForm.controls['department_id'].touched || addUserForm.controls['department_id'].dirty) && addUserForm.controls['department_id'].errors?.['required']){
+                        <span>Required field</span>
+                      }
+                    </div>
+                   
+
+                      
+
+                  </div>
+               </div>
+
+               <div class="d-flex gap-5 mt-5">
+                  <label for="user" class="form-lable">Role&nbsp;Type<sup class="text-danger">*</sup></label>
+                  <div class="select-feild2">
+                   <select  id="role_type" formControlName="role_type" class="form-control form-select ng-pristine ng-invalid ng-touched">
+                      <option  [value]="" selected disabled class="text-secondry">Select Role Type</option>
+                      @for (item of roleType; track $index)
+                      
+                      {
+                        
+                         <option  value='{{item.role_type | uppercase}}' selected class="text-secondry">{{item.role_type}}</option>
+                        
+                      }
+                      </select>
+
+                      <div class="text-danger">
+                         @if( (addUserForm.controls['role_type'].touched || addUserForm.controls['role_type'].dirty) && addUserForm.controls['role_type'].errors?.['required']){
+                           <span>Required field</span>
+                         }
+                       </div>
+
+
+
+                  </div>               
+                </div> 
+              
+          </div>
+          <div class="col-6">
+              <div class="d-flex gap-5 ">
+                  <label for="" class="form-lable">Last&nbsp;Name<sup class="text-danger">*</sup></label>
+                  <div class="input_feild3">
+                      <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="last_name"> 
+                      <div class="text-danger">
+                         @if( (addUserForm.controls['last_name'].touched || addUserForm.controls['last_name'].dirty) && addUserForm.controls['last_name'].errors?.['required']){
+                           <span>Required field</span>
+                         }
+                       </div>
+                  </div>
+               </div>
+
+               <div class="d-flex gap-5 mt-5">
+                  <label for="" class="form-lable">Phone&nbsp;Number<sup class="text-danger">*</sup></label>
+                   <div class="input-field4">
+                      <input type="phone" class="form-control" placeholder="Enter Personal Phone Number" formControlName="contact_number"> 
+                      <div class="text-danger">
+                         @if( (addUserForm.controls['contact_number'].touched || addUserForm.controls['contact_number'].dirty) && addUserForm.controls['contact_number'].errors?.['required']){
+                           <span>Required field</span>
+                         }
+
+                         @else if( (addUserForm.controls['contact_number'].touched || addUserForm.controls['contact_number'].dirty) && addUserForm.controls['contact_number'].errors?.['maxlength']){
+                            <span>Maximum 10 digit number</span>
+                          }
+                         
+                          @else if( (addUserForm.controls['contact_number'].touched || addUserForm.controls['contact_number'].dirty) && addUserForm.controls['contact_number'].errors?.['minlength']){
+                            <span>Minimum 10 digit number</span>
+                          }
+                        
+                       </div>
+                   </div>
+                </div>
+              
+               <div class="d-flex gap-5 mt-5 mt-5">
+                  <label for="data" class="form-lable">Designation<sup class="text-danger">*</sup></label>
+                  <div class="select-3">
+                   <select _ngcontent-ng-c3187538701="" id="department" formControlName="designation_id" class="form-control form-select ng-pristine ng-invalid ng-touched">
+                      <option _ngcontent-ng-c3187538701="" [value]="" selected disabled class="text-secondry">Select Designation</option>
+                      @for (item of designation; track $index) 
+                      {
+                         <option _ngcontent-ng-c3187538701="" [value]="item.id" selected class="text-secondry">{{item.designation_name}}</option>
+ 
+                      }
+                      </select>
+                      <div class="text-danger">
+                         @if( (addUserForm.controls['designation_id'].touched || addUserForm.controls['designation_id'].dirty) && addUserForm.controls['designation_id'].errors?.['required']){
+                           <span>Required field</span>
+                         }
+                       </div>
+
+                  </div>
+                  
+               </div>
+
+              
+          </div>
+          <div class="text-end mt-3 mb-5 ">
+              <button class="btn btn-info rounded-pill me-3" (click)="onUserSubmit()">submit</button>
+              <!-- <a routerLink="/dashboard"> <button class="btn btn-dark rounded-pill text-white me-3">Cancle</button>
+              </a> -->
+              <button class="btn btn-dark rounded-pill text-white me-3" (click)="onCancel()">Cancle</button>
+             @if(isEdit==true)
+             {
+                <button class="btn btn-primary rounded-pill" (click)="onUpDate()">Update</button>
+
+
+             }
+             <!-- @if(isEdit1==true)
+             {
+                <button class="btn btn-primary rounded-pill" (click)="onUpDate1()">Update</button>
+
+
+             } -->
+             
+          </div>
+         </div>
+      </form>
+
+      </div>
+    </div>
+    </div>
+
+    <div class="row mt-5">
+      <h2 class="text-center">Manage Registration</h2>
+    <hr>
+      <nav class="navbar navbar-light bg-light justify-content-between">
+         <a class="navbar-brand">List of Users</a>
+         <form class="d-flex">
+           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" class="me-3">
+           <a routerLink="/add-user"><button class="btn btn-primary" (click)="onAddUser()">Add Users</button></a>
+         </form>
+       </nav>
+      <table class="table table-striped mt-5">
+         <thead>
+           <tr>
+             <th>S.NO.</th>
+             <th>First Name</th>
+             <th>Last Name</th>
+             <th>email</th>
+             <th>Department</th>
+             <th>Designation</th>
+             <th>User Type</th>
+             <th>Phone No</th>
+             <th>Action</th>
+           </tr>
+         </thead>
+ 
+         <tbody>
+           @for (item of data; track $index) {
+             
+               
+             <tr>
+               <td>{{item.s_no}}</td>
+               <td>{{item.first_name}}</td>
+               <td>{{item.last_name}}</td>
+               <td>{{item.email}}</td>
+               <td>{{item.department_name}}</td>
+               <td>{{item.designation_name}}</td>
+               <td>{{item.role_type}}</td>
+               <td>{{item.contact_number}}</td>
+               <td><button class="btn btn-primary rounded-pill d-flex"><span class="material-symbols-outlined" (click)="onEdit(item)">edit</span >rights</button></td>
+              
+             </tr>
+           }
+          
+         </tbody>
+       </table>
+    </div>
+</div>

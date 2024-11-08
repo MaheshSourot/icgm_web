@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    /* background: #c4ecf4;
+    background: linear-gradient(175deg, #c4ecf4, #b2e4ee);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c4ecf4",endColorstr="#b2e4ee",GradientType=1);*/
+    font-family: "Source Sans 3", system-ui; 
+    font-optical-sizing: auto;
+    font-style: normal;
+    
+    
+}
